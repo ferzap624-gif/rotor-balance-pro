@@ -97,7 +97,7 @@ export class HardwareSimulator {
         this.emergency = false;
         return { accepted: true, message: "Reset de falla ejecutado" };
       case "SET_TARGET_RPM":
-        this.targetRpm = Number(cmd.payload?.rpm ?? this.targetRpm);
+        this.targetRpm = Number(cmd.payload?.["rpm"] ?? this.targetRpm);
         return { accepted: true, message: `RPM objetivo: ${this.targetRpm}` };
       case "MEASURE_START":
         if (!this.running) return { accepted: false, message: "El rotor no está girando" };
