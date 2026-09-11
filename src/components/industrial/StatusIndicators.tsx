@@ -8,10 +8,10 @@ export function StatusPill({
   severity,
   className,
 }: {
-  label?: string;
+  label?: string | undefined;
   value: string;
   severity: Severity;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <span
