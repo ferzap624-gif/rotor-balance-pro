@@ -161,10 +161,14 @@ function sample(label: string, t: Telemetry, planes: 1 | 2): MeasurementSample {
     timestamp: t.timestamp || Date.now(),
     rpm: t.rpm,
     planeA: a,
-    planeB:
-      planes === 2
-        ? { amplitude: Math.round(a.amplitude * 0.82 * 100) / 100, angle: (a.angle + 47) % 360 }
-        : undefined,
+    ...(planes === 2
+      ? {
+          planeB: {
+            amplitude: Math.round(a.amplitude * 0.82 * 100) / 100,
+            angle: (a.angle + 47) % 360,
+          },
+        }
+      : {}),
     harmonics: {
       x1: t.harmonics.x1.amplitude,
       x2: t.harmonics.x2.amplitude,
