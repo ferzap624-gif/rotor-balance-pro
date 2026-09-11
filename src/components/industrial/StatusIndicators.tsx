@@ -52,7 +52,7 @@ export function CommunicationStatus({
 }: {
   state: ConnectionState;
   mode: string;
-  detail?: string;
+  detail?: string | undefined;
   compact?: boolean;
 }) {
   const meta = CONNECTION_META[state];
