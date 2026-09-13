@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MaquinaRouteImport } from './routes/maquina'
+import { Route as MedicionRouteImport } from './routes/medicion'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MaquinaRoute = MaquinaRouteImport.update({
+  id: '/maquina',
+  path: '/maquina',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicionRoute = MedicionRouteImport.update({
+  id: '/medicion',
+  path: '/medicion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/maquina': typeof MaquinaRoute
+  '/medicion': typeof MedicionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/maquina': typeof MaquinaRoute
+  '/medicion': typeof MedicionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/maquina': typeof MaquinaRoute
+  '/medicion': typeof MedicionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/maquina' | '/medicion'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/maquina' | '/medicion'
+  id: '__root__' | '/' | '/maquina' | '/medicion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MaquinaRoute: typeof MaquinaRoute
+  MedicionRoute: typeof MedicionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/maquina': {
+      id: '/maquina'
+      path: '/maquina'
+      fullPath: '/maquina'
+      preLoaderRoute: typeof MaquinaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medicion': {
+      id: '/medicion'
+      path: '/medicion'
+      fullPath: '/medicion'
+      preLoaderRoute: typeof MedicionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MaquinaRoute: MaquinaRoute,
+  MedicionRoute: MedicionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
