@@ -10,12 +10,36 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalisisRouteImport } from './routes/analisis'
+import { Route as Balanceo1PlanoRouteImport } from './routes/balanceo-1-plano'
+import { Route as Balanceo2PlanosRouteImport } from './routes/balanceo-2-planos'
+import { Route as CorreccionRouteImport } from './routes/correccion'
 import { Route as MaquinaRouteImport } from './routes/maquina'
 import { Route as MedicionRouteImport } from './routes/medicion'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalisisRoute = AnalisisRouteImport.update({
+  id: '/analisis',
+  path: '/analisis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Balanceo1PlanoRoute = Balanceo1PlanoRouteImport.update({
+  id: '/balanceo-1-plano',
+  path: '/balanceo-1-plano',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Balanceo2PlanosRoute = Balanceo2PlanosRouteImport.update({
+  id: '/balanceo-2-planos',
+  path: '/balanceo-2-planos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorreccionRoute = CorreccionRouteImport.update({
+  id: '/correccion',
+  path: '/correccion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MaquinaRoute = MaquinaRouteImport.update({
@@ -31,30 +55,68 @@ const MedicionRoute = MedicionRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analisis': typeof AnalisisRoute
+  '/balanceo-1-plano': typeof Balanceo1PlanoRoute
+  '/balanceo-2-planos': typeof Balanceo2PlanosRoute
+  '/correccion': typeof CorreccionRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analisis': typeof AnalisisRoute
+  '/balanceo-1-plano': typeof Balanceo1PlanoRoute
+  '/balanceo-2-planos': typeof Balanceo2PlanosRoute
+  '/correccion': typeof CorreccionRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analisis': typeof AnalisisRoute
+  '/balanceo-1-plano': typeof Balanceo1PlanoRoute
+  '/balanceo-2-planos': typeof Balanceo2PlanosRoute
+  '/correccion': typeof CorreccionRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/maquina' | '/medicion'
+  fullPaths:
+    | '/'
+    | '/analisis'
+    | '/balanceo-1-plano'
+    | '/balanceo-2-planos'
+    | '/correccion'
+    | '/maquina'
+    | '/medicion'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/maquina' | '/medicion'
-  id: '__root__' | '/' | '/maquina' | '/medicion'
+  to:
+    | '/'
+    | '/analisis'
+    | '/balanceo-1-plano'
+    | '/balanceo-2-planos'
+    | '/correccion'
+    | '/maquina'
+    | '/medicion'
+  id:
+    | '__root__'
+    | '/'
+    | '/analisis'
+    | '/balanceo-1-plano'
+    | '/balanceo-2-planos'
+    | '/correccion'
+    | '/maquina'
+    | '/medicion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalisisRoute: typeof AnalisisRoute
+  Balanceo1PlanoRoute: typeof Balanceo1PlanoRoute
+  Balanceo2PlanosRoute: typeof Balanceo2PlanosRoute
+  CorreccionRoute: typeof CorreccionRoute
   MaquinaRoute: typeof MaquinaRoute
   MedicionRoute: typeof MedicionRoute
 }
@@ -66,6 +128,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analisis': {
+      id: '/analisis'
+      path: '/analisis'
+      fullPath: '/analisis'
+      preLoaderRoute: typeof AnalisisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/balanceo-1-plano': {
+      id: '/balanceo-1-plano'
+      path: '/balanceo-1-plano'
+      fullPath: '/balanceo-1-plano'
+      preLoaderRoute: typeof Balanceo1PlanoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/balanceo-2-planos': {
+      id: '/balanceo-2-planos'
+      path: '/balanceo-2-planos'
+      fullPath: '/balanceo-2-planos'
+      preLoaderRoute: typeof Balanceo2PlanosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/correccion': {
+      id: '/correccion'
+      path: '/correccion'
+      fullPath: '/correccion'
+      preLoaderRoute: typeof CorreccionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/maquina': {
@@ -87,6 +177,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalisisRoute: AnalisisRoute,
+  Balanceo1PlanoRoute: Balanceo1PlanoRoute,
+  Balanceo2PlanosRoute: Balanceo2PlanosRoute,
+  CorreccionRoute: CorreccionRoute,
   MaquinaRoute: MaquinaRoute,
   MedicionRoute: MedicionRoute,
 }
