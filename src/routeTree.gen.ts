@@ -13,9 +13,13 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnalisisRouteImport } from './routes/analisis'
 import { Route as Balanceo1PlanoRouteImport } from './routes/balanceo-1-plano'
 import { Route as Balanceo2PlanosRouteImport } from './routes/balanceo-2-planos'
+import { Route as CalibracionRouteImport } from './routes/calibracion'
 import { Route as CorreccionRouteImport } from './routes/correccion'
+import { Route as HistorialRouteImport } from './routes/historial'
 import { Route as MaquinaRouteImport } from './routes/maquina'
 import { Route as MedicionRouteImport } from './routes/medicion'
+import { Route as ReportesRouteImport } from './routes/reportes'
+import { Route as ResultadosRouteImport } from './routes/resultados'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,9 +41,19 @@ const Balanceo2PlanosRoute = Balanceo2PlanosRouteImport.update({
   path: '/balanceo-2-planos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CalibracionRoute = CalibracionRouteImport.update({
+  id: '/calibracion',
+  path: '/calibracion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CorreccionRoute = CorreccionRouteImport.update({
   id: '/correccion',
   path: '/correccion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistorialRoute = HistorialRouteImport.update({
+  id: '/historial',
+  path: '/historial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MaquinaRoute = MaquinaRouteImport.update({
@@ -52,24 +66,42 @@ const MedicionRoute = MedicionRouteImport.update({
   path: '/medicion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportesRoute = ReportesRouteImport.update({
+  id: '/reportes',
+  path: '/reportes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultadosRoute = ResultadosRouteImport.update({
+  id: '/resultados',
+  path: '/resultados',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analisis': typeof AnalisisRoute
   '/balanceo-1-plano': typeof Balanceo1PlanoRoute
   '/balanceo-2-planos': typeof Balanceo2PlanosRoute
+  '/calibracion': typeof CalibracionRoute
   '/correccion': typeof CorreccionRoute
+  '/historial': typeof HistorialRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
+  '/reportes': typeof ReportesRoute
+  '/resultados': typeof ResultadosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analisis': typeof AnalisisRoute
   '/balanceo-1-plano': typeof Balanceo1PlanoRoute
   '/balanceo-2-planos': typeof Balanceo2PlanosRoute
+  '/calibracion': typeof CalibracionRoute
   '/correccion': typeof CorreccionRoute
+  '/historial': typeof HistorialRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
+  '/reportes': typeof ReportesRoute
+  '/resultados': typeof ResultadosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +109,13 @@ export interface FileRoutesById {
   '/analisis': typeof AnalisisRoute
   '/balanceo-1-plano': typeof Balanceo1PlanoRoute
   '/balanceo-2-planos': typeof Balanceo2PlanosRoute
+  '/calibracion': typeof CalibracionRoute
   '/correccion': typeof CorreccionRoute
+  '/historial': typeof HistorialRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
+  '/reportes': typeof ReportesRoute
+  '/resultados': typeof ResultadosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +124,39 @@ export interface FileRouteTypes {
     | '/analisis'
     | '/balanceo-1-plano'
     | '/balanceo-2-planos'
+    | '/calibracion'
     | '/correccion'
+    | '/historial'
     | '/maquina'
     | '/medicion'
+    | '/reportes'
+    | '/resultados'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/analisis'
     | '/balanceo-1-plano'
     | '/balanceo-2-planos'
+    | '/calibracion'
     | '/correccion'
+    | '/historial'
     | '/maquina'
     | '/medicion'
+    | '/reportes'
+    | '/resultados'
   id:
     | '__root__'
     | '/'
     | '/analisis'
     | '/balanceo-1-plano'
     | '/balanceo-2-planos'
+    | '/calibracion'
     | '/correccion'
+    | '/historial'
     | '/maquina'
     | '/medicion'
+    | '/reportes'
+    | '/resultados'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,9 +164,13 @@ export interface RootRouteChildren {
   AnalisisRoute: typeof AnalisisRoute
   Balanceo1PlanoRoute: typeof Balanceo1PlanoRoute
   Balanceo2PlanosRoute: typeof Balanceo2PlanosRoute
+  CalibracionRoute: typeof CalibracionRoute
   CorreccionRoute: typeof CorreccionRoute
+  HistorialRoute: typeof HistorialRoute
   MaquinaRoute: typeof MaquinaRoute
   MedicionRoute: typeof MedicionRoute
+  ReportesRoute: typeof ReportesRoute
+  ResultadosRoute: typeof ResultadosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -151,11 +203,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Balanceo2PlanosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/calibracion': {
+      id: '/calibracion'
+      path: '/calibracion'
+      fullPath: '/calibracion'
+      preLoaderRoute: typeof CalibracionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/correccion': {
       id: '/correccion'
       path: '/correccion'
       fullPath: '/correccion'
       preLoaderRoute: typeof CorreccionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historial': {
+      id: '/historial'
+      path: '/historial'
+      fullPath: '/historial'
+      preLoaderRoute: typeof HistorialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/maquina': {
@@ -172,6 +238,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MedicionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reportes': {
+      id: '/reportes'
+      path: '/reportes'
+      fullPath: '/reportes'
+      preLoaderRoute: typeof ReportesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resultados': {
+      id: '/resultados'
+      path: '/resultados'
+      fullPath: '/resultados'
+      preLoaderRoute: typeof ResultadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -180,9 +260,13 @@ const rootRouteChildren: RootRouteChildren = {
   AnalisisRoute: AnalisisRoute,
   Balanceo1PlanoRoute: Balanceo1PlanoRoute,
   Balanceo2PlanosRoute: Balanceo2PlanosRoute,
+  CalibracionRoute: CalibracionRoute,
   CorreccionRoute: CorreccionRoute,
+  HistorialRoute: HistorialRoute,
   MaquinaRoute: MaquinaRoute,
   MedicionRoute: MedicionRoute,
+  ReportesRoute: ReportesRoute,
+  ResultadosRoute: ResultadosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
