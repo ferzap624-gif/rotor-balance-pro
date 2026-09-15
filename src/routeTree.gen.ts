@@ -14,12 +14,15 @@ import { Route as AnalisisRouteImport } from './routes/analisis'
 import { Route as Balanceo1PlanoRouteImport } from './routes/balanceo-1-plano'
 import { Route as Balanceo2PlanosRouteImport } from './routes/balanceo-2-planos'
 import { Route as CalibracionRouteImport } from './routes/calibracion'
+import { Route as ConfiguracionRouteImport } from './routes/configuracion'
 import { Route as CorreccionRouteImport } from './routes/correccion'
+import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
 import { Route as HistorialRouteImport } from './routes/historial'
 import { Route as MaquinaRouteImport } from './routes/maquina'
 import { Route as MedicionRouteImport } from './routes/medicion'
 import { Route as ReportesRouteImport } from './routes/reportes'
 import { Route as ResultadosRouteImport } from './routes/resultados'
+import { Route as SimulacionRouteImport } from './routes/simulacion'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,9 +49,19 @@ const CalibracionRoute = CalibracionRouteImport.update({
   path: '/calibracion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConfiguracionRoute = ConfiguracionRouteImport.update({
+  id: '/configuracion',
+  path: '/configuracion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CorreccionRoute = CorreccionRouteImport.update({
   id: '/correccion',
   path: '/correccion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiagnosticoRoute = DiagnosticoRouteImport.update({
+  id: '/diagnostico',
+  path: '/diagnostico',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistorialRoute = HistorialRouteImport.update({
@@ -76,6 +89,11 @@ const ResultadosRoute = ResultadosRouteImport.update({
   path: '/resultados',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SimulacionRoute = SimulacionRouteImport.update({
+  id: '/simulacion',
+  path: '/simulacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -83,12 +101,15 @@ export interface FileRoutesByFullPath {
   '/balanceo-1-plano': typeof Balanceo1PlanoRoute
   '/balanceo-2-planos': typeof Balanceo2PlanosRoute
   '/calibracion': typeof CalibracionRoute
+  '/configuracion': typeof ConfiguracionRoute
   '/correccion': typeof CorreccionRoute
+  '/diagnostico': typeof DiagnosticoRoute
   '/historial': typeof HistorialRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
   '/reportes': typeof ReportesRoute
   '/resultados': typeof ResultadosRoute
+  '/simulacion': typeof SimulacionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -96,12 +117,15 @@ export interface FileRoutesByTo {
   '/balanceo-1-plano': typeof Balanceo1PlanoRoute
   '/balanceo-2-planos': typeof Balanceo2PlanosRoute
   '/calibracion': typeof CalibracionRoute
+  '/configuracion': typeof ConfiguracionRoute
   '/correccion': typeof CorreccionRoute
+  '/diagnostico': typeof DiagnosticoRoute
   '/historial': typeof HistorialRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
   '/reportes': typeof ReportesRoute
   '/resultados': typeof ResultadosRoute
+  '/simulacion': typeof SimulacionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -110,12 +134,15 @@ export interface FileRoutesById {
   '/balanceo-1-plano': typeof Balanceo1PlanoRoute
   '/balanceo-2-planos': typeof Balanceo2PlanosRoute
   '/calibracion': typeof CalibracionRoute
+  '/configuracion': typeof ConfiguracionRoute
   '/correccion': typeof CorreccionRoute
+  '/diagnostico': typeof DiagnosticoRoute
   '/historial': typeof HistorialRoute
   '/maquina': typeof MaquinaRoute
   '/medicion': typeof MedicionRoute
   '/reportes': typeof ReportesRoute
   '/resultados': typeof ResultadosRoute
+  '/simulacion': typeof SimulacionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -125,12 +152,15 @@ export interface FileRouteTypes {
     | '/balanceo-1-plano'
     | '/balanceo-2-planos'
     | '/calibracion'
+    | '/configuracion'
     | '/correccion'
+    | '/diagnostico'
     | '/historial'
     | '/maquina'
     | '/medicion'
     | '/reportes'
     | '/resultados'
+    | '/simulacion'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -138,12 +168,15 @@ export interface FileRouteTypes {
     | '/balanceo-1-plano'
     | '/balanceo-2-planos'
     | '/calibracion'
+    | '/configuracion'
     | '/correccion'
+    | '/diagnostico'
     | '/historial'
     | '/maquina'
     | '/medicion'
     | '/reportes'
     | '/resultados'
+    | '/simulacion'
   id:
     | '__root__'
     | '/'
@@ -151,12 +184,15 @@ export interface FileRouteTypes {
     | '/balanceo-1-plano'
     | '/balanceo-2-planos'
     | '/calibracion'
+    | '/configuracion'
     | '/correccion'
+    | '/diagnostico'
     | '/historial'
     | '/maquina'
     | '/medicion'
     | '/reportes'
     | '/resultados'
+    | '/simulacion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -165,12 +201,15 @@ export interface RootRouteChildren {
   Balanceo1PlanoRoute: typeof Balanceo1PlanoRoute
   Balanceo2PlanosRoute: typeof Balanceo2PlanosRoute
   CalibracionRoute: typeof CalibracionRoute
+  ConfiguracionRoute: typeof ConfiguracionRoute
   CorreccionRoute: typeof CorreccionRoute
+  DiagnosticoRoute: typeof DiagnosticoRoute
   HistorialRoute: typeof HistorialRoute
   MaquinaRoute: typeof MaquinaRoute
   MedicionRoute: typeof MedicionRoute
   ReportesRoute: typeof ReportesRoute
   ResultadosRoute: typeof ResultadosRoute
+  SimulacionRoute: typeof SimulacionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -210,11 +249,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalibracionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/configuracion': {
+      id: '/configuracion'
+      path: '/configuracion'
+      fullPath: '/configuracion'
+      preLoaderRoute: typeof ConfiguracionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/correccion': {
       id: '/correccion'
       path: '/correccion'
       fullPath: '/correccion'
       preLoaderRoute: typeof CorreccionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diagnostico': {
+      id: '/diagnostico'
+      path: '/diagnostico'
+      fullPath: '/diagnostico'
+      preLoaderRoute: typeof DiagnosticoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/historial': {
@@ -252,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResultadosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/simulacion': {
+      id: '/simulacion'
+      path: '/simulacion'
+      fullPath: '/simulacion'
+      preLoaderRoute: typeof SimulacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -261,12 +321,15 @@ const rootRouteChildren: RootRouteChildren = {
   Balanceo1PlanoRoute: Balanceo1PlanoRoute,
   Balanceo2PlanosRoute: Balanceo2PlanosRoute,
   CalibracionRoute: CalibracionRoute,
+  ConfiguracionRoute: ConfiguracionRoute,
   CorreccionRoute: CorreccionRoute,
+  DiagnosticoRoute: DiagnosticoRoute,
   HistorialRoute: HistorialRoute,
   MaquinaRoute: MaquinaRoute,
   MedicionRoute: MedicionRoute,
   ReportesRoute: ReportesRoute,
   ResultadosRoute: ResultadosRoute,
+  SimulacionRoute: SimulacionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
